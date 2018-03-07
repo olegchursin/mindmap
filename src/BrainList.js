@@ -7,7 +7,6 @@ const BrainList = (props) => {
       {props.brainAreas.map(b => {
         // console.log(b) // object
           return <div key={b.id}><Brain brainArea={b} handleSubmit={props.handleSubmit}/></div>
-
         })}
     </div>
   )

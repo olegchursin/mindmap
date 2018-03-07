@@ -14,14 +14,18 @@ class BrainContainer extends React.Component {
     })
   }
 
-  handleSubmit = (brainArea, question, answer) => {
-    let brainAreas = this.state.brainAreas.slice() // create a copy of state's brainArea []
-    let neededArea = brainAreas.find(ba => ba === brainArea) // find neededArea {}
+  handleSubmit = (id, question, answer) => {
+    let updatedAreas = this.state.brainAreas.slice() // create a copy of state's brainArea []
     let qaPair = {question: question, answer: answer} // create qa {}
-    let updatedArea = neededArea.qas.push(qaPair) // add/push qaPair {} to the updatedArea []
+
+    updatedAreas.forEach(area => {
+      if(question && answer && area.id === id) {
+        area.qas.push(qaPair)
+      }
+    })
 
     this.setState({
-      brainAreas: neededArea
+      brainAreas: updatedAreas
     })
   }
 

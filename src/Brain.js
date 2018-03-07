@@ -6,9 +6,9 @@ class Brain extends React.Component {
     answer: ''
   }
 
-  handleSubmit = (e) => {
+  submitQa = (e) => {
     e.preventDefault()
-    this.props.handleSubmit(this.props.brainArea, this.state.question, this.state.answer)
+    this.props.handleSubmit(this.props.brainArea.id, this.state.question, this.state.answer)
   }
 
   handleChange = (e) => {
@@ -27,9 +27,9 @@ class Brain extends React.Component {
         <h2>{this.props.brainArea.name}</h2>
         <p>{this.props.brainArea.description}</p>
         <div>{qa}</div>
-        <form onSubmit={(event) => this.handleSubmit(this.props.brainArea)}>
-          <input type="text" name="question" value={this.state.question} onChange={this.handleChange}/>
-          <input type="text" name="answer" value={this.state.answer} onChange={this.handleChange}/>
+        <form onSubmit={this.submitQa}>
+          <input type="text" name="question" value={this.state.question} onChange={this.handleChange} placeholder="Add a question"/>
+          <input type="text" name="answer" value={this.state.answer} onChange={this.handleChange} placeholder="Add the answer"/>
           <input type="submit" value="submit" />
         </form>
       </div>
